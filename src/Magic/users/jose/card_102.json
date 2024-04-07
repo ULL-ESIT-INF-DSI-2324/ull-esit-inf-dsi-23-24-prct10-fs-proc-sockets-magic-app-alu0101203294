@@ -1,0 +1,15 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "jose",
+  "id": 102,
+  "name": "Benevolent Blessing",
+  "manaCost": "1",
+  "color": "Blanco",
+  "lineType": "Encantamiento",
+  "rarity": "Infrecuente",
+  "rulesText": "Cuando entra al campo de batalla, elige un color. Las criaturas del color elegido obtienen +1/+1.",
+  "marketPrice": 5,
+  "$0": "dist/Magic/index.js"
+}

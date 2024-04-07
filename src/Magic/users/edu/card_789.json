@@ -1,0 +1,15 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "edu",
+  "id": 789,
+  "name": "Contraconjuro",
+  "manaCost": 2,
+  "color": "Azul",
+  "lineType": "Conjuro",
+  "rarity": "Comun",
+  "rulesText": "Contrarresta el hechizo objetivo.",
+  "marketPrice": 2,
+  "$0": "dist/Magic/index.js"
+}

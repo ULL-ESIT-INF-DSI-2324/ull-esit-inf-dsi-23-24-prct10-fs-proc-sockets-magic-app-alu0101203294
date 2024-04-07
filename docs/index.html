@@ -1,0 +1,161 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>doc-test</title><meta name="description" content="Documentation for doc-test"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">doc-test</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>doc-test</h2></div><div class="tsd-panel tsd-typography"><a id="md:desarrollo-de-sistemas-informáticos" class="tsd-anchor"></a><h1><a href="#md:desarrollo-de-sistemas-informáticos"><strong>Desarrollo de Sistemas Informáticos</strong></a></h1><a id="md:grado-en-ingeniería-informática---universidad-de-la-laguna" class="tsd-anchor"></a><h2><a href="#md:grado-en-ingeniería-informática---universidad-de-la-laguna">Grado en Ingeniería Informática - Universidad de La Laguna</a></h2><a id="md:práctica-9----aplicación-para-coleccionistas-de-cartas-magic" class="tsd-anchor"></a><h3><a href="#md:práctica-9----aplicación-para-coleccionistas-de-cartas-magic">Práctica 9  - Aplicación para coleccionistas de cartas Magic</a></h3><a id="md:josé-miguel-díaz-gonzález" class="tsd-anchor"></a><h5><a href="#md:josé-miguel-díaz-gonzález">José Miguel Díaz González</a></h5><p align="center">
+    <a href="https://github.com/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/actions/workflows/node.js.yml">
+        <img alt="Test" src="https://github.com/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/actions/workflows/node.js.yml/badge.svg">
+    </a>
+    <a href="https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2324_ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294">
+        <img alt="Sonar Cloud" src="https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2324_ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294&metric=alert_status">
+    </a>
+    <a href="https://coveralls.io/github/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294?branch=main">
+        <img alt="Coverage Status" src="https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/badge.svg?branch=main">
+    </a>
+</p>
+
+<a id="md:gestor-de-cartas-de-magic" class="tsd-anchor"></a><h1><a href="#md:gestor-de-cartas-de-magic">Gestor de Cartas de Magic</a></h1><p>Esta práctica consiste en un gestor de cartas de Magic que permite a los usuarios administrar sus colecciones de cartas, incluyendo funciones para agregar nuevas cartas, actualizar cartas existentes, eliminar cartas y ver detalles de las cartas en la colección.</p>
+<a id="md:enumeraciones" class="tsd-anchor"></a><h2><a href="#md:enumeraciones">Enumeraciones</a></h2><a id="md:color" class="tsd-anchor"></a><h3><a href="#md:color">Color</a></h3><ul>
+<li><code>Blanco</code></li>
+<li><code>Azul</code></li>
+<li><code>Negro</code></li>
+<li><code>Rojo</code></li>
+<li><code>Verde</code></li>
+<li><code>Incoloro</code></li>
+<li><code>Multicolor</code></li>
+</ul>
+<a id="md:linetype" class="tsd-anchor"></a><h3><a href="#md:linetype">LineType</a></h3><ul>
+<li><code>Tierra</code></li>
+<li><code>Criatura</code></li>
+<li><code>Encantamiento</code></li>
+<li><code>Conjuro</code></li>
+<li><code>Instantáneo</code></li>
+<li><code>Artefacto</code></li>
+<li><code>Planeswalker</code></li>
+</ul>
+<a id="md:rarity" class="tsd-anchor"></a><h3><a href="#md:rarity">Rarity</a></h3><ul>
+<li><code>Comun</code></li>
+<li><code>Infrecuente</code></li>
+<li><code>Rara</code></li>
+<li><code>Mítica</code></li>
+</ul>
+<a id="md:interfaces" class="tsd-anchor"></a><h2><a href="#md:interfaces">Interfaces</a></h2><a id="md:card" class="tsd-anchor"></a><h3><a href="#md:card">Card</a></h3><p>Una interfaz que representa una carta Magic y contiene los siguientes atributos:</p>
+<ul>
+<li><code>id</code>: Identificador de la carta.</li>
+<li><code>name</code>: Nombre de la carta.</li>
+<li><code>manaCost</code>: Costo de maná de la carta.</li>
+<li><code>color</code>: Color de la carta (de la enumeración <code>Color</code>).</li>
+<li><code>cardType</code>: Tipo de carta (de la enumeración <code>LineType</code>).</li>
+<li><code>rarity</code>: Rareza de la carta (de la enumeración <code>Rarity</code>).</li>
+<li><code>rulesText</code>: Texto de reglas de la carta.</li>
+<li><code>strength</code> (opcional): Fuerza de la carta (para criaturas).</li>
+<li><code>resistance</code> (opcional): Resistencia de la carta (para criaturas).</li>
+<li><code>loyalty</code> (opcional): Lealtad de la carta (para planeswalkers).</li>
+<li><code>marketPrice</code>: Precio de mercado de la carta.</li>
+</ul>
+<a id="md:clases" class="tsd-anchor"></a><h2><a href="#md:clases">Clases</a></h2><a id="md:filemanager" class="tsd-anchor"></a><h3><a href="#md:filemanager">FileManager</a></h3><p>La clase <code>FileManager</code> se encarga de gestionar los archivos de las cartas. Proporciona los métodos para cargar, guardar y manipular las cartas en el sistema de archivos.</p>
+<a id="md:constructor" class="tsd-anchor"></a><h4><a href="#md:constructor">Constructor</a></h4><ul>
+<li><code>constructor(username: string)</code>: El constructor de la clase inicializa una nueva instancia de <code>FileManager</code>. Toma un parámetro <code>username</code> que representa el nombre de usuario asociado con el gestor de archivos. Este constructor también establece el directorio de usuario en el sistema de archivos donde se almacenarán las cartas.</li>
+</ul>
+<a id="md:métodos-públicos" class="tsd-anchor"></a><h4><a href="#md:métodos-públicos">Métodos Públicos</a></h4><ul>
+<li><p><code>getUserDir(): string</code>: Un método que retorna el directorio del usuario. Devuelve la ruta del directorio donde se almacenan las cartas del usuario.</p>
+</li>
+<li><p><code>getFilePath(cardId: number): string</code>: Un método que retorna la ruta de un archivo de carta dado su identificador (<code>cardId</code>). Devuelve la ruta completa al archivo correspondiente a la carta con el ID especificado.</p>
+</li>
+<li><p><code>load(): Map&lt;number, Card&gt;</code>: Un método que carga las cartas del usuario desde el sistema de archivos. Lee los archivos de las cartas en el directorio del usuario y devuelve un mapa que contiene las cartas cargadas, donde la clave es el ID de la carta y el valor es la carta misma.</p>
+</li>
+<li><p><code>save(collection: Map&lt;number, Card&gt;): void</code>: Un método que guarda las cartas del usuario en el sistema de archivos. Recibe un mapa que contiene las cartas a guardar, donde la clave es el ID de la carta y el valor es la carta misma. Guarda cada carta como un archivo en el directorio del usuario.</p>
+</li>
+</ul>
+<a id="md:métodos-privados" class="tsd-anchor"></a><h4><a href="#md:métodos-privados">Métodos Privados</a></h4><ul>
+<li><code>createDirectoryIfNotExists(): void</code>: Un método privado que crea el directorio del usuario si no existe. Verifica si el directorio del usuario existe en el sistema de archivos y lo crea si no está presente.</li>
+</ul>
+<a id="md:cardcollection" class="tsd-anchor"></a><h3><a href="#md:cardcollection">CardCollection</a></h3><p>La clase CardCollection se encarga de gestionar las colecciones de cartas de un usuario. Proporciona funciones para agregar, actualizar, eliminar y ver cartas en la colección.</p>
+<ul>
+<li><p><code>constructor(user: string)</code>: El constructor de la clase inicializa una nueva instancia de <code>CardCollection</code>. Toma un parámetro <code>user</code> que representa el nombre de usuario asociado con la colección y carga las cartas del usuario existentes.</p>
+</li>
+<li><p><code>getColor(color: string): string</code>: Un método que toma un color como entrada y devuelve su código hexadecimal correspondiente. Sirve para formatear el color de la carta en las salidas de la colección.</p>
+</li>
+<li><p><code>loadc(): void</code>: Un método privado que carga las cartas del usuario desde el sistema de archivos. Estas cartas se almacenan en la propiedad <code>collection</code> de la clase.</p>
+</li>
+<li><p><code>addCard(newCard: Card): void</code>: Un método que agrega una nueva carta a la colección. Verifica si la carta ya existe en la colección antes de agregarla y gestiona casos donde el color de la carta no está.</p>
+</li>
+<li><p><code>updateCard(updatedCard: Card): void</code>: Un método que actualiza una carta existente en la colección. Reemplaza la carta existente con la carta actualizada y guarda los cambios en el sistema de archivos.</p>
+</li>
+<li><p><code>removeCard(cardId: number): void</code>: Un método que elimina una carta de la colección. Elimina el archivo correspondiente al ID de la carta y la elimina de la lista de cartas en memoria.</p>
+</li>
+<li><p><code>listCards(): void</code>: Un método que lista todas las cartas en la colección. Muestra los detalles de cada carta, incluyendo su ID, nombre, costo de maná, color, tipo, rareza, texto de reglas y precio de mercado. Además, muestra características adicionales como fuerza y resistencia para criaturas, o lealtad para planeswalkers.</p>
+</li>
+<li><p><code>readCard(cardId: number): void</code>: Un método que lee los detalles de una carta específica en la colección. Muestra los mismos detalles que <code>listCards()</code> pero solo para la carta con el ID proporcionado.</p>
+</li>
+</ul>
+<a id="md:interfaz-de-línea-de-comandos-cli-como-index" class="tsd-anchor"></a><h2><a href="#md:interfaz-de-línea-de-comandos-cli-como-index">Interfaz de línea de comandos (CLI) como Index</a></h2><p>El proyecto incluye una interfaz de línea de comandos (CLI) para interactuar con las cartas de Magic. Los comandos disponibles son:</p>
+<ul>
+<li><code>add</code>: Agrega una nueva carta a la colección.</li>
+<li><code>list</code>: Lista todas las cartas en la colección.</li>
+<li><code>update</code>: Actualiza una carta en la colección.</li>
+<li><code>read</code>: Lee los detalles de una carta específica en la colección.</li>
+<li><code>remove</code>: Elimina una carta de la colección.</li>
+</ul>
+<a id="md:uso" class="tsd-anchor"></a><h2><a href="#md:uso">Uso</a></h2><p>Para usar la interfaz de línea de comandos, ejecutar:</p>
+<p><strong>Añadir carta:</strong></p>
+<pre><code class="language-bash"><span class="hl-0">node</span><span class="hl-1"> </span><span class="hl-2">dist/Magic/index.js</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-3">--user=</span><span class="hl-1"> &lt;</span><span class="hl-2">nombre_usuari</span><span class="hl-1">o&gt; </span><span class="hl-3">--id=</span><span class="hl-1"> &lt;</span><span class="hl-2">id_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--name=</span><span class="hl-1"> &lt;</span><span class="hl-2">nombre_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--manaCost=</span><span class="hl-1"> &lt;</span><span class="hl-2">costo_man</span><span class="hl-1">a&gt; </span><span class="hl-3">--color=</span><span class="hl-1"> &lt;</span><span class="hl-2">color_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--lineType=</span><span class="hl-1"> &lt;</span><span class="hl-2">tipo_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--rarity=</span><span class="hl-1"> &lt;</span><span class="hl-2">rareza_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--rulesText=</span><span class="hl-1"> &lt;</span><span class="hl-2">texto_regla</span><span class="hl-1">s&gt; </span><span class="hl-3">--marketPrice</span><span class="hl-1"> &lt;</span><span class="hl-2">precio_mercad</span><span class="hl-1">o&gt;</span>
+</code><button>Copy</button></pre>
+<p><strong>Actualizar carta:</strong></p>
+<pre><code class="language-bash"><span class="hl-0">node</span><span class="hl-1"> </span><span class="hl-2">dist/Magic/index.js</span><span class="hl-1"> </span><span class="hl-2">update</span><span class="hl-1"> </span><span class="hl-3">--user=</span><span class="hl-1"> &lt;</span><span class="hl-2">nombre_usuari</span><span class="hl-1">o&gt; </span><span class="hl-3">--id=</span><span class="hl-1"> &lt;</span><span class="hl-2">id_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--name=</span><span class="hl-1"> &lt;</span><span class="hl-2">nombre_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--manaCost=</span><span class="hl-1"> &lt;</span><span class="hl-2">costo_man</span><span class="hl-1">a&gt; </span><span class="hl-3">--color=</span><span class="hl-1"> &lt;</span><span class="hl-2">color_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--lineType=</span><span class="hl-1"> &lt;</span><span class="hl-2">tipo_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--rarity=</span><span class="hl-1"> &lt;</span><span class="hl-2">rareza_cart</span><span class="hl-1">a&gt; </span><span class="hl-3">--rulesText=</span><span class="hl-1"> &lt;</span><span class="hl-2">texto_regla</span><span class="hl-1">s&gt; </span><span class="hl-3">--marketPrice</span><span class="hl-1"> &lt;</span><span class="hl-2">precio_mercad</span><span class="hl-1">o&gt;</span>
+</code><button>Copy</button></pre>
+<p><strong>Eliminar carta</strong></p>
+<pre><code class="language-bash"><span class="hl-0">node</span><span class="hl-1"> </span><span class="hl-2">dist/Magic/index.js</span><span class="hl-1"> </span><span class="hl-2">remove</span><span class="hl-1"> </span><span class="hl-3">--user=</span><span class="hl-1"> &lt;</span><span class="hl-2">nombre_usuari</span><span class="hl-1">o&gt; </span><span class="hl-3">--id=</span><span class="hl-1"> &lt;</span><span class="hl-2">id_cart</span><span class="hl-1">a&gt;</span>
+</code><button>Copy</button></pre>
+<p><strong>Listar todas las cartas de un usuario</strong></p>
+<pre><code class="language-bash"><span class="hl-0">node</span><span class="hl-1"> </span><span class="hl-2">dist/Magic/index.js</span><span class="hl-1"> </span><span class="hl-2">list</span><span class="hl-1"> </span><span class="hl-3">--user=</span><span class="hl-1"> &lt;</span><span class="hl-2">nombre_usuari</span><span class="hl-1">o&gt;</span>
+</code><button>Copy</button></pre>
+<p><strong>Mostrar una carta de un usuario</strong></p>
+<pre><code class="language-bash"><span class="hl-0">node</span><span class="hl-1"> </span><span class="hl-2">dist/Magic/index.js</span><span class="hl-1"> </span><span class="hl-2">read</span><span class="hl-1"> </span><span class="hl-3">--user=</span><span class="hl-1"> &lt;</span><span class="hl-2">nombre_usuari</span><span class="hl-1">o&gt; </span><span class="hl-3">--id=</span><span class="hl-1"> &lt;</span><span class="hl-2">id_cart</span><span class="hl-1">a&gt;</span>
+</code><button>Copy</button></pre>
+<a id="md:modificación" class="tsd-anchor"></a><h1><a href="#md:modificación">Modificación</a></h1><p>El objetivo de este ejercicio es desarrollar un programa para procesar archivos CSV y JSON que contengan la información sobre una instancia del problema de la mochila.
+Se ha resuelto de la siguiente manera:</p>
+<ol>
+<li><p><strong>Interfaz Elemento:</strong></p>
+<ul>
+<li>Define la estructura de un elemento de la mochila con propiedades como número, peso y beneficio.</li>
+</ul>
+</li>
+<li><p><strong>Clase abstracta ProcesadorMochila:</strong></p>
+<ul>
+<li>Define el esqueleto de un procesador de mochila con métodos abstractos para leer un archivo, parsear datos y extraer beneficios y pesos.</li>
+<li>Implementa un método <code>procesar</code> que utiliza los métodos abstractos para procesar los datos de la mochila.</li>
+</ul>
+</li>
+<li><p><strong>Clase CSVProcesador:</strong></p>
+<ul>
+<li>Implementa la lectura de datos de un archivo CSV simulado y los métodos abstractos de la clase <code>ProcesadorMochila</code>.</li>
+<li>En el método <code>leerArchivo</code>, se simula la lectura de un archivo CSV.</li>
+<li>En el método <code>parsearDatos</code>, se convierten los datos CSV en un objeto con capacidad y elementos de la mochila.</li>
+<li>En el método <code>extraerBeneficiosYPesos</code>, se extraen los beneficios y pesos de los elementos de la mochila.</li>
+</ul>
+</li>
+<li><p><strong>Clase JSONProcesador:</strong></p>
+<ul>
+<li>Implementa la lectura de datos de un archivo JSON simulado y los métodos abstractos de la clase <code>ProcesadorMochila</code>.</li>
+<li>En el método <code>leerArchivo</code>, se simula la lectura de un archivo JSON.</li>
+<li>En el método <code>parsearDatos</code>, se convierten los datos JSON en un objeto con capacidad y elementos de la mochila.</li>
+<li>En el método <code>extraerBeneficiosYPesos</code>, se extraen los beneficios y pesos de los elementos de la mochila.</li>
+</ul>
+</li>
+<li><p><strong>Ejemplos de uso:</strong></p>
+<ul>
+<li>Se crean instancias de <code>CSVProcesador</code> y <code>JSONProcesador</code>.</li>
+<li>Se llama al método <code>procesar</code> en cada instancia para obtener los resultados de procesamiento.</li>
+<li>Se imprimen los resultados en la consola para verificar que los beneficios y pesos se hayan procesado correctamente.</li>
+</ul>
+</li>
+</ol>
+<a id="md:conclusiones" class="tsd-anchor"></a><h2><a href="#md:conclusiones">Conclusiones</a></h2><p>La aplicación proporciona una solución eficiente y práctica para la gestión de colecciones de cartas mágicas. Su diseño de datos garantiza la integridad de la colección, mientras que la lógica de la aplicación la hace extensible. Se han utilizado diversas herramientas y técnicas de desarrollo de software para TypeScript, como yargs y Chalk, lo que ha permitido crear un sistema robusto y fácil de usar y visualmente bonito. Además, el manejo del API de Node.js para la manipulación de archivos ha sido muy importante en la implementación de la funcionalidad de persistencia de datos. Ha habido un progreso importante en el manejo de TypeScript y en la comprensión de los conceptos relacionados con el desarrollo de aplicaciones CLI, lo que proporciona una base muy importante para futuros proyectos.</p>
+<hr>
+<p><a href="https://ull-esit-inf-dsi-2324.github.io/prct09-fiilesystem-magic-app/">Enlace al Guion</a></p>
+<p><a href="https://ull-esit-inf-dsi-2324.github.io/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/index.html">Enlace al Informe</a></p>
+<hr>
+<a id="md:referencias" class="tsd-anchor"></a><h4><a href="#md:referencias">Referencias</a></h4><ul>
+<li><a href="https://yargs.js.org/">yargs</a></li>
+<li><a href="https://www.npmjs.com/package/chalk">chalk</a></li>
+<li><a href="https://www.typescriptlang.org/docs/">TypeScript</a></li>
+<li><a href="https://nodejs.org/docs/latest/api/">Node.js API</a></li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-index-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><h4 class="uppercase">Member Visibility</h4><form><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div><div class="tsd-theme-toggle"><h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:desarrollo-de-sistemas-informáticos"><span>Desarrollo de <wbr/>Sistemas <wbr/>Informáticos</span></a><ul><li><a href="#md:grado-en-ingeniería-informática---universidad-de-la-laguna"><span>Grado en <wbr/>Ingeniería <wbr/>Informática -<wbr/> <wbr/>Universidad de <wbr/>La <wbr/>Laguna</span></a></li><li><ul><li><a href="#md:práctica-9----aplicación-para-coleccionistas-de-cartas-magic"><span>Práctica 9  -<wbr/> <wbr/>Aplicación para coleccionistas de cartas <wbr/>Magic</span></a></li><li><ul><li><ul><li><a href="#md:josé-miguel-díaz-gonzález"><span>José <wbr/>Miguel <wbr/>Díaz <wbr/>González</span></a></li></ul></li></ul></li></ul></li></ul><a href="#md:gestor-de-cartas-de-magic"><span>Gestor de <wbr/>Cartas de <wbr/>Magic</span></a><ul><li><a href="#md:enumeraciones"><span>Enumeraciones</span></a></li><li><ul><li><a href="#md:color"><span>Color</span></a></li><li><a href="#md:linetype"><span>Line<wbr/>Type</span></a></li><li><a href="#md:rarity"><span>Rarity</span></a></li></ul></li><li><a href="#md:interfaces"><span>Interfaces</span></a></li><li><ul><li><a href="#md:card"><span>Card</span></a></li></ul></li><li><a href="#md:clases"><span>Clases</span></a></li><li><ul><li><a href="#md:filemanager"><span>File<wbr/>Manager</span></a></li><li><ul><li><a href="#md:constructor"><span>Constructor</span></a></li><li><a href="#md:métodos-públicos"><span>Métodos <wbr/>Públicos</span></a></li><li><a href="#md:métodos-privados"><span>Métodos <wbr/>Privados</span></a></li></ul></li><li><a href="#md:cardcollection"><span>Card<wbr/>Collection</span></a></li></ul></li><li><a href="#md:interfaz-de-línea-de-comandos-cli-como-index"><span>Interfaz de línea de comandos (CLI) como <wbr/>Index</span></a></li><li><a href="#md:uso"><span>Uso</span></a></li></ul><a href="#md:modificación"><span>Modificación</span></a><ul><li><a href="#md:conclusiones"><span>Conclusiones</span></a></li><li><ul><li><a href="#md:referencias"><span>Referencias</span></a></li></ul></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="index.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>doc-test</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><div class="tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div></body></html>

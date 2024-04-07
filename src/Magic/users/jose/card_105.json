@@ -1,0 +1,15 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "jose",
+  "id": 105,
+  "name": "Savannah",
+  "manaCost": "0",
+  "color": "Verde",
+  "lineType": "Tierra",
+  "rarity": "Rara",
+  "rulesText": "Tap: Agrega {W} o {G}.",
+  "marketPrice": 50,
+  "$0": "dist/Magic/index.js"
+}

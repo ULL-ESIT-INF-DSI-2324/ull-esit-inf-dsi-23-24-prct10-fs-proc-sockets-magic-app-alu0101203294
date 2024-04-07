@@ -1,0 +1,14 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "edu",
+  "id": 131415,
+  "name": "Playa Inundada",
+  "color": "Incoloro",
+  "lineType": "Tierra",
+  "rarity": "Rara",
+  "rulesText": "T, Paga 1 vida, Sacrifica la Playa Inundada: Busca en tu biblioteca una carta de Llanura o Isla, ponla en el campo de batalla y luego baraja tu biblioteca.",
+  "marketPrice": 30,
+  "$0": "dist/Magic/index.js"
+}

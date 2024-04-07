@@ -1,0 +1,15 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "jose",
+  "id": 104,
+  "name": "Sol Ring",
+  "manaCost": 1,
+  "color": "Incoloro",
+  "lineType": "Artefacto",
+  "rarity": "Común",
+  "rulesText": "T: Agrega {C}{C}.",
+  "marketPrice": 10,
+  "$0": "dist/Magic/index.js"
+}
