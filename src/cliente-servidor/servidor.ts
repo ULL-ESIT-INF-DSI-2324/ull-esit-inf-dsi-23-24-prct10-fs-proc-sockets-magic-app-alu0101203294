@@ -67,13 +67,15 @@ const server = net.createServer(socket => {
             }
                 break;
             case 'read':{
-                const card = cardCollection.findCardById(requestData.card.id);
-                if (card) {
-                    responseData = card;
-                } else {
-                    responseData = { error: 'Card not found in the collection.' };
-                }
-
+                const foundCard = cardCollection.findCardById(requestData.card.id);
+    console.log(foundCard);
+    if (foundCard) {
+        // Enviar la carta encontrada al cliente dentro de un objeto JSON
+        sendResponse(socket, { card: foundCard });
+    } else {
+        // Enviar un mensaje de error al cliente
+        sendResponse(socket, { message: chalk.bold.red('Card not found in the collection.') });
+    }
             }
                 break;
             default:

@@ -43,6 +43,24 @@ client.on('data', data => {
             
             console.log('\n');
         });
+    } else if (responseData.card) {
+        // Mostrar la información de la carta recibida
+        const card = responseData.card;
+        const colorCode = getColorCode(card.color);
+        console.log(chalk.green.bold(`ID: ${chalk.yellow(card.id)}`));
+            console.log(chalk.green.bold(`Name: ${chalk.white(card.name)}`));
+            console.log(chalk.green.bold(`Mana Cost: ${chalk.white(card.manaCost)}`));
+            console.log(chalk.green.bold(`Color: ${chalk.hex(colorCode)(card.color)}`));
+            console.log(chalk.green.bold(`Card Type: ${chalk.white(card.cardType)}`));
+            console.log(chalk.green.bold(`Rarity: ${chalk.white(card.rarity)}`));
+            console.log(chalk.green.bold(`Rules Text: ${chalk.white(card.rulesText)}`));
+            console.log(chalk.green.bold(`Market Price: ${chalk.white(card.marketPrice)}`));
+        if (card.strength !== undefined && card.resistance !== undefined) {
+            console.log(chalk.green.bold(`Strength: ${chalk.blue(card.strength)}`));
+            console.log(chalk.green.bold(`Resistance: ${chalk.blue(card.resistance)}`));
+        } else if (card.loyalty !== undefined) {
+            console.log(chalk.green.bold(`Loyalty: ${chalk.blue(card.loyalty)}`));
+        }
     }
 });
 

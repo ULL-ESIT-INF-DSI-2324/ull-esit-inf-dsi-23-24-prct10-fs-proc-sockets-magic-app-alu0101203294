@@ -161,7 +161,7 @@ export class CardCollection {
      * @returns Retorna una carta leida.
      * 
      */
-    public readCard(cardId: number): void {
+    public readCard(cardId: number): Card | undefined {
         const card = this.collection.find(card => card.id === cardId);
         
         if (card) {
@@ -175,14 +175,18 @@ export class CardCollection {
             console.log(chalk.green.bold(`Rarity: ${chalk.white(card.rarity)}`));
             console.log(chalk.green.bold(`Rules Text: ${chalk.white(card.rulesText)}`));
             console.log(chalk.green.bold(`Market Price: ${chalk.white(card.marketPrice)}`));
+            
             if (card.cardType === 'Criatura') {
                 console.log(chalk.green.bold(`Strength: ${chalk.white(card.strength)}`));
                 console.log(chalk.green.bold(`Resistance: ${chalk.white(card.resistance)}`));
             } else if (card.cardType === 'Planeswalker') {
                 console.log(chalk.green.bold(`Loyalty: ${chalk.white(card.loyalty)}`));
             }
+            
+            return card;
         } else {
             console.log(chalk.yellow('Card not found in the collection.'));
+            return undefined;
         }
     }
 
