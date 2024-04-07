@@ -13,7 +13,7 @@ import { Rarity } from "../Enums/rarity.js";
  * @param rulesText Texto de reglas de la carta.
  * @param strength Fuerza de la carta.
  * @param resistance Resistencia de la carta.
- * @param loyalty Lealtad de la carta.
+ * @param loyalty Lealtad de la cartaa.
  * @param marketPrice Precio de mercado de la carta.
  * @returns Retorna una carta.
  */

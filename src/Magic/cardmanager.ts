@@ -91,14 +91,16 @@ export class CardCollection {
      * @returns  Retorna una carta actualizada.
      * 
      */
-    public updateCard(updatedCard: Card): void {
+    public updateCard(updatedCard: Card): boolean {
         const index = this.collection.findIndex(card => card.id === updatedCard.id);
         if (index !== -1) {
             this.collection[index] = updatedCard;
             this.file.save(new Map(this.collection.map(card => [card.id, card])));
             console.log(chalk.green('Card updated successfully.'));
+            return true;
         } else {
             console.log(chalk.yellow('Card not found in the collection.'));
+            return false;
         }
     }
      
@@ -127,7 +129,7 @@ export class CardCollection {
      * @returns Retorna una lista de cartas.
      * 
      */
-    public listCards(): void {
+    public listCards(): Card[] {
         console.log(chalk.blue('Listing cards in the collection:'));
     
         this.collection.forEach(card => {
@@ -148,7 +150,9 @@ export class CardCollection {
             }
     
             console.log('\n');
+
         });
+        return this.collection;
     }
     
     /**
@@ -180,6 +184,10 @@ export class CardCollection {
         } else {
             console.log(chalk.yellow('Card not found in the collection.'));
         }
+    }
+
+    public findCardById(cardId: number): Card | undefined {
+        return this.collection.find(card => card.id === cardId);
     }
 
     
