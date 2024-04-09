@@ -1,0 +1,15 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "edu",
+  "id": 101112,
+  "name": "Anillo Sol",
+  "manaCost": 1,
+  "color": "Rojo",
+  "lineType": "Artefacto",
+  "rarity": "Común",
+  "rulesText": "T: Agrega {C}{C}.",
+  "marketPrice": 10,
+  "$0": "dist/Magic/index.js"
+}

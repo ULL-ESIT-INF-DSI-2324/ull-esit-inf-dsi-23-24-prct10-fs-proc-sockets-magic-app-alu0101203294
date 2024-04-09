@@ -1,0 +1,15 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "edu",
+  "id": 456,
+  "name": "Encantamiento Encantado",
+  "manaCost": 4,
+  "color": "Blanco",
+  "lineType": "Encantamiento",
+  "rarity": "Rara",
+  "rulesText": "Todos los permanentes son encantamientos además de sus otros tipos.",
+  "marketPrice": 20,
+  "$0": "dist/Magic/index.js"
+}

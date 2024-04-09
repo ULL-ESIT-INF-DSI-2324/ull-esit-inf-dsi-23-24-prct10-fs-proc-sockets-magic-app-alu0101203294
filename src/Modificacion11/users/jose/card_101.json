@@ -1,0 +1,17 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "jose",
+  "id": 101,
+  "name": "Serra Angel",
+  "manaCost": "3",
+  "color": "Blanco",
+  "lineType": "Criatura",
+  "rarity": "Rara",
+  "rulesText": "Flying, vigilancia.",
+  "strength": 4,
+  "resistance": 4,
+  "marketPrice": 15,
+  "$0": "dist/Magic/index.js"
+}

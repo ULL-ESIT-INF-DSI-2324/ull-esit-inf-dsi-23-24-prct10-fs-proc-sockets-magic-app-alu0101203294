@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "name": "Test Card 2",
+  "manaCost": 3,
+  "color": "Rojo",
+  "cardType": "Criatura",
+  "rarity": "Mítica",
+  "rulesText": "Test rules 2",
+  "marketPrice": 15,
+  "strength": 4,
+  "resistance": 3
+}

@@ -51,9 +51,15 @@ const server = net.createServer(socket => {
                     responseData = { message: chalk.bold.red('Card not found in the collection.') };
                 }}
                 break;
-            case 'remove':
-                cardCollection.removeCard(requestData.card.id);
-                responseData = { message: chalk.bold.green('The card has been successfully removed') };
+            case 'remove':{
+                const removed = cardCollection.removeCard(requestData.card.id);
+    if (removed) {
+        responseData = { message: chalk.bold.green('The card has been successfully removed') };
+    } else {
+        responseData = { message: chalk.bold.red('The card you want to delete has not been found') };
+    }
+            }
+                
                 break;
             case 'list':{
                 const cards = cardCollection.listCards();

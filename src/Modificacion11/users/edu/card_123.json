@@ -1,0 +1,17 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "edu",
+  "id": 123,
+  "name": "Tarmogoyf",
+  "manaCost": 1,
+  "color": "Verde",
+  "lineType": "Criatura",
+  "rarity": "Rara",
+  "rulesText": "El poder de Tarmogoyf es igual al número de tipos de cartas entre todas las cartas en los cementerios y su resistencia es igual a ese número más 1.",
+  "strength": 4,
+  "resistance": 5,
+  "marketPrice": 50,
+  "$0": "dist/Magic/index.js"
+}
