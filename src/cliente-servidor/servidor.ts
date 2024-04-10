@@ -2,13 +2,7 @@ import * as net from 'net';
 import * as fs from 'fs';
 import * as path from 'path';
 import chalk from 'chalk';
-import { FileManager } from '../Magic/files.js';
-import { Card } from '../Magic/interfaces/card.js';
 import { CardCollection } from '../Magic/cardmanager.js';
-import { Color } from '../Magic/Enums/color.js';
-import { LineType } from '../Magic/Enums/linetype.js';
-import { Rarity } from '../Magic/Enums/rarity.js';
-import yargsParser from 'yargs-parser';
 
 // Puerto en el que el servidor escuchará las conexiones
 const PORT = 3000;
@@ -34,56 +28,75 @@ const server = net.createServer(socket => {
 
         switch (requestData.operation) {
             case 'add':{
-                const existingCard = cardCollection.findCardById(cardData.id);
-                if (existingCard) {
-                    responseData = { message: chalk.red('The card with this ID already exists in the collection.') };
-                } else {
-                    cardCollection.addCard(cardData);
-                    responseData = { message: chalk.green('The card has been added successfully') };
-                }
-            }
-                break;
-            case 'update':{
-                const updated = cardCollection.updateCard(requestData.card);
-                if (updated) {
-                    responseData = { message: chalk.bold.green('The card has been successfully updated!') };
-                } else {
-                    responseData = { message: chalk.bold.red('Card not found in the collection.') };
-                }}
-                break;
-            case 'remove':{
-                const removed = cardCollection.removeCard(requestData.card.id);
-    if (removed) {
-        responseData = { message: chalk.bold.green('The card has been successfully removed') };
-    } else {
-        responseData = { message: chalk.bold.red('The card you want to delete has not been found') };
-    }
-            }
-                
-                break;
-            case 'list':{
-                const cards = cardCollection.listCards();
-                if (cards.length > 0) {
-                // Envía los datos de las cartas al cliente
-                sendResponse(socket, { cards });
-                } else {
-                // Si no hay cartas, envía un mensaje de error
-                sendResponse(socket, { error: 'No cards found in the collection.' });
-                }  
-            }
-                break;
-            case 'read':{
-                const foundCard = cardCollection.findCardById(requestData.card.id);
-    console.log(foundCard);
-    if (foundCard) {
-        // Enviar la carta encontrada al cliente dentro de un objeto JSON
-        sendResponse(socket, { card: foundCard });
-    } else {
-        // Enviar un mensaje de error al cliente
-        sendResponse(socket, { message: chalk.bold.red('Card not found in the collection.') });
-    }
-            }
-                break;
+        // Verificar si el directorio del usuario existe, si no, crearlo
+        if (!fs.existsSync(path.join('./src/Magic/users/', requestData.user))) {
+            fs.mkdirSync(path.join('./src/Magic/users/', requestData.user), { recursive: true });
+        }
+        const existingCard = cardCollection.findCardById(cardData.id);
+        if (existingCard) {
+            responseData = { message: chalk.red('The card with this ID already exists in the collection.') };
+        } else {
+            cardCollection.addCard(cardData);
+            responseData = { message: chalk.green('The card has been added successfully') };
+        }}
+        break;
+    case 'update':{
+        // Verificar si el usuario existe
+        if (!fs.existsSync(path.join('./src/Magic/users/', requestData.user))) {
+            responseData = { message: chalk.red('The user does not exist or cannot be found') };
+            break;
+        }
+        const updated = cardCollection.updateCard(requestData.card);
+        if (updated) {
+            responseData = { message: chalk.bold.green('The card has been successfully updated!') };
+        } else {
+            responseData = { message: chalk.bold.red('Card not found in the collection.') };
+        }}
+        break;
+    case 'remove':{
+        // Verificar si el usuario existe
+        if (!fs.existsSync(path.join('./src/Magic/users/', requestData.user))) {
+            responseData = { message: chalk.red('The user does not exist or cannot be found') };
+            break;
+        }
+        const removed = cardCollection.removeCard(requestData.card.id);
+        if (removed) {
+            responseData = { message: chalk.bold.green('The card has been successfully removed') };
+        } else {
+            responseData = { message: chalk.bold.red('The card you want to delete has not been found') };
+        }}
+        break;
+    case 'list':{
+        // Verificar si el usuario existe
+        if (!fs.existsSync(path.join('./src/Magic/users/', requestData.user))) {
+            responseData = { message: chalk.red('The user does not exist or cannot be found') };
+            break;
+        }
+        const cards = cardCollection.listCards();
+        if (cards.length > 0) {
+            // Envía los datos de las cartas al cliente
+            sendResponse(socket, { cards });
+        } else {
+            // Si no hay cartas, envía un mensaje de error
+            sendResponse(socket, { error: 'No cards found in the collection.' });
+        }}
+        break;
+    case 'read':{
+        // Verificar si el usuario existe
+        if (!fs.existsSync(path.join('./src/Magic/users/', requestData.user))) {
+            responseData = { message: chalk.red('The user does not exist or cannot be found') };
+            break;
+        }
+        const foundCard = cardCollection.findCardById(requestData.card.id);
+        console.log(foundCard);
+        if (foundCard) {
+            // Enviar la carta encontrada al cliente dentro de un objeto JSON
+            sendResponse(socket, { card: foundCard });
+        } else {
+            // Enviar un mensaje de error al cliente
+            sendResponse(socket, { message: chalk.bold.red('Card not found in the collection.') });
+        }}
+        break;
             default:
                 responseData = { error: 'Invalid operation.' };
         }
