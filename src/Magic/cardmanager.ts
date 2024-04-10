@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import chalk from 'chalk';
 import { Card } from '../Magic/interfaces/card.js';
 import { FileManager } from '../Magic/files.js';
+
 /**
  * Clase que se encarga de manejar las colecciones de cartas.
  * @class CardCollection Clase que se encarga de manejar las colecciones de cartas.

@@ -2,6 +2,7 @@ import fs from 'fs';
 import { Card } from '../Magic/interfaces/card.js';
 import * as path from 'path';
 
+
 /**
  * Clase que se encarga de manejar los archivos de las cartas.
  * @class FileManager Clase que se encarga de manejar los archivos de las cartas.

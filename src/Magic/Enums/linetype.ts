@@ -3,6 +3,7 @@
  * Ejemplos de tipos de línea incluyen: Tierra, Criatura, Encantamiento, Conjuro, Instantáneo, Artefacto o Planeswalker.
  */
 
+
 export enum LineType {
     Tierra = 'Tierra',
     Criatura = 'Criatura',

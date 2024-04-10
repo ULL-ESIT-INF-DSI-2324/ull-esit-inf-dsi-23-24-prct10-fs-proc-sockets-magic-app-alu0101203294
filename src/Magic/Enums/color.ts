@@ -3,6 +3,7 @@
  * 
  */
 
+
 export enum Color {
     Blanco = 'Blanco',
     Azul = 'Azul',

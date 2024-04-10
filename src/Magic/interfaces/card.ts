@@ -17,6 +17,7 @@ import { Rarity } from "../Enums/rarity.js";
  * @param marketPrice Precio de mercado de la carta.
  * @returns Retorna una carta.
  */
+
 export interface Card {
   id: number;
   name: string;

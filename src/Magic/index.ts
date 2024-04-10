@@ -3,6 +3,7 @@ import yargs from 'yargs';
 import { Card } from '../Magic/interfaces/card.js';
 import { hideBin } from 'yargs/helpers';
 import { CardCollection } from '../Magic/cardmanager.js'; 
+
 /**
  * Comandos:
  * index.js add     Add a new user to the collection

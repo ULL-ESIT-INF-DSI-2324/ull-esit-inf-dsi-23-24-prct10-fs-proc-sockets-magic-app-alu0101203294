@@ -3,6 +3,7 @@
  * Las rarezas pueden ser: Común, Infrecuente, Rara o Mítica.
  */
 
+
 export enum Rarity {
     Comun = 'Comun',
     Infrecuente = 'Infrecuente',
