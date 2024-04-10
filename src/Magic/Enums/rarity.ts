@@ -9,3 +9,4 @@ export enum Rarity {
     Rara = 'Rara',
     Mítica = 'Mítica',
   }
+  
