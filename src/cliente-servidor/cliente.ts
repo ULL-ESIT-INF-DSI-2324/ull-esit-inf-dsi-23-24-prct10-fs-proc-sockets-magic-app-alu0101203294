@@ -5,15 +5,33 @@ import { Card } from '../Magic/interfaces/card.js';
 import { hideBin } from 'yargs/helpers';
 
 // Dirección IP y puerto del servidor
+/**
+ * @constant {string} SERVER_HOST Dirección IP del servidor
+ * @constant {number} SERVER_PORT Puerto del servidor
+ * @constant {net.Socket} client Cliente de conexión con el servidor
+ * 
+ */
 const SERVER_HOST = 'localhost';
 const SERVER_PORT = 3000;
 
-// Conexión con el servidor
+
+/**
+ * Conexion con el servidor
+ * @param {net.Socket} client Cliente de conexión con el servidor
+ * @param {string} host Dirección IP del servidor
+ * @param {number} port Puerto del servidor
+ * @returns {void}
+ * 
+ */
 const client = net.createConnection({ host: SERVER_HOST, port: SERVER_PORT }, () => {
     console.log(chalk.green('Connected to server.\n'));
 });
 
-// Manejo de eventos de datos del cliente
+/**
+ * Maneja los eventos de datos del cliente.
+ * @param {Buffer} data - Los datos recibidos del servidor.
+ * @returns {void}
+ */
 client.on('data', data => {
     const responseData = JSON.parse(data.toString());
     if (responseData.message) {
@@ -64,7 +82,10 @@ client.on('data', data => {
     }
 });
 
-// Manejo de eventos de cierre de conexión del cliente
+/**
+ * Maneja el evento de cierre de la conexión del cliente.
+ * @returns {void}
+ */
 client.on('close', () => {
     console.log(chalk.red('\nConnection finished'));
 });
@@ -174,6 +195,13 @@ yargs(hideBin(process.argv))
         console.error(chalk.red('Error al parsear argumentos:'), error);
     });
 
+
+    /**
+    * Devuelve el código hexadecimal correspondiente a un color.
+    * @param {string} color - El nombre del color.
+    * @returns {string} El código hexadecimal del color.
+    * 
+    */
     function getColorCode(color: string): string {
         switch (color.toLowerCase()) {
             case 'blanco':

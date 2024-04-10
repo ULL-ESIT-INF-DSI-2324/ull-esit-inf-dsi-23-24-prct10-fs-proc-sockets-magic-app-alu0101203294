@@ -2,26 +2,27 @@
 
 ## Grado en Ingeniería Informática - Universidad de La Laguna
 
-### Práctica 9  - Aplicación para coleccionistas de cartas Magic
+### Práctica 10  - Aplicación cliente-servidor para coleccionistas de cartas Magic
 
 ##### José Miguel Díaz González
 
 
 <p align="center">
-    <a href="https://github.com/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/actions/workflows/node.js.yml">
-        <img alt="Test" src="https://github.com/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/actions/workflows/node.js.yml/badge.svg">
+    <a href="https://github.com/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-alu0101203294/actions/workflows/node.js.yml">
+        <img alt="Test" src="https://github.com/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-alu0101203294/actions/workflows/node.js.yml/badge.svg">
     </a>
-    <a href="https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2324_ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294">
-        <img alt="Sonar Cloud" src="https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2324_ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294&metric=alert_status">
+    <a href="https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2324_ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-alu0101203294">
+        <img alt="Sonar Cloud" src="https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2324_ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-alu0101203294&metric=alert_status">
     </a>
-    <a href="https://coveralls.io/github/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294?branch=main">
-        <img alt="Coverage Status" src="https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/badge.svg?branch=main">
+    <a href="https://coveralls.io/github/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-alu0101203294?branch=main">
+        <img alt="Coverage Status" src="https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2324/ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-alu0101203294/badge.svg?branch=main">
     </a>
 </p>
 
-# Gestor de Cartas de Magic
 
-Esta práctica consiste en un gestor de cartas de Magic que permite a los usuarios administrar sus colecciones de cartas, incluyendo funciones para agregar nuevas cartas, actualizar cartas existentes, eliminar cartas y ver detalles de las cartas en la colección.
+# Gestor de Cartas de Magic con Cliente-Servidor
+
+Esta práctica consiste en un gestor de cartas de Magic que permite a los usuarios administrar sus colecciones de cartas, incluyendo funciones para agregar nuevas cartas, actualizar cartas existentes, eliminar cartas y ver detalles de las cartas en la colección, implementando un servidor y un cliente haciendo uso de los sockets proporcionados por el módulo net de Node.js.  
 
 ## Enumeraciones
 
@@ -129,6 +130,14 @@ El proyecto incluye una interfaz de línea de comandos (CLI) para interactuar co
 
 Para usar la interfaz de línea de comandos, ejecutar:
 
+### **En el servidor**
+**Iniciar servidor**
+```bash
+node dist/cliente-servidor/servidor.js
+```
+----
+
+### **En el cliente**
 **Añadir carta:**
 ```bash
 node dist/Magic/index.js add --user= <nombre_usuario> --id= <id_carta> --name= <nombre_carta> --manaCost= <costo_mana> --color= <color_carta> --lineType= <tipo_carta> --rarity= <rareza_carta> --rulesText= <texto_reglas> --marketPrice <precio_mercado>
@@ -151,32 +160,7 @@ node dist/Magic/index.js read --user= <nombre_usuario> --id= <id_carta>
 ```
 
 # Modificación
-El objetivo de este ejercicio es desarrollar un programa para procesar archivos CSV y JSON que contengan la información sobre una instancia del problema de la mochila.
-Se ha resuelto de la siguiente manera:
 
-1. **Interfaz Elemento:**
-   - Define la estructura de un elemento de la mochila con propiedades como número, peso y beneficio.
-
-2. **Clase abstracta ProcesadorMochila:**
-   - Define el esqueleto de un procesador de mochila con métodos abstractos para leer un archivo, parsear datos y extraer beneficios y pesos.
-   - Implementa un método `procesar` que utiliza los métodos abstractos para procesar los datos de la mochila.
-
-3. **Clase CSVProcesador:**
-   - Implementa la lectura de datos de un archivo CSV simulado y los métodos abstractos de la clase `ProcesadorMochila`.
-   - En el método `leerArchivo`, se simula la lectura de un archivo CSV.
-   - En el método `parsearDatos`, se convierten los datos CSV en un objeto con capacidad y elementos de la mochila.
-   - En el método `extraerBeneficiosYPesos`, se extraen los beneficios y pesos de los elementos de la mochila.
-
-4. **Clase JSONProcesador:**
-   - Implementa la lectura de datos de un archivo JSON simulado y los métodos abstractos de la clase `ProcesadorMochila`.
-   - En el método `leerArchivo`, se simula la lectura de un archivo JSON.
-   - En el método `parsearDatos`, se convierten los datos JSON en un objeto con capacidad y elementos de la mochila.
-   - En el método `extraerBeneficiosYPesos`, se extraen los beneficios y pesos de los elementos de la mochila.
-
-5. **Ejemplos de uso:**
-   - Se crean instancias de `CSVProcesador` y `JSONProcesador`.
-   - Se llama al método `procesar` en cada instancia para obtener los resultados de procesamiento.
-   - Se imprimen los resultados en la consola para verificar que los beneficios y pesos se hayan procesado correctamente.
 
 
 

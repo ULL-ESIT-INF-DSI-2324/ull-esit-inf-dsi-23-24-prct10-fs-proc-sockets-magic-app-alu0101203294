@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as net from 'net';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -7,7 +8,10 @@ import { CardCollection } from '../Magic/cardmanager.js';
 // Puerto en el que el servidor escuchará las conexiones
 const PORT = 3000;
 
-// Creación del servidor
+/**
+ * Crea y configura un servidor para manejar las solicitudes de clientes.
+ * @param {net.Socket} socket - El socket conectado al cliente.
+ */
 const server = net.createServer(socket => {
     console.log('Cliente conectado.');
 
@@ -113,7 +117,12 @@ const server = net.createServer(socket => {
         console.log('Cliente desconectado.');
     });
 
-    // Función para enviar respuestas al cliente
+    /**
+     * Envia una respuesta al cliente.
+     * @param {net.Socket} socket - El socket conectado al cliente.
+     * @param {any} responseData - Los datos de respuesta para enviar al cliente.
+     * @returns {void}
+     */
     function sendResponse(socket: net.Socket, responseData: any): void {
         if (responseData !== undefined) {
             const responseDataString = JSON.stringify(responseData);
