@@ -1,0 +1,12 @@
+import 'mocha';
+import {expect} from 'chai';
+import { Color } from "../src/Modificacion11/Enums/color.js";
+import { LineType } from "../src/Modificacion11/Enums/linetype.js";
+import { Rarity } from "../src/Modificacion11/Enums/rarity.js";
+import { Card } from "../src/Modificacion11/interfaces/card.js";
+import { CardCollection } from "../src/Modificacion11/cardmanager.js";
+import { FileManager } from "../src/Modificacion11/files.js";
+import chalk from 'chalk';
+import path from 'path';
+import fs from 'fs';
+import sinon from 'sinon';

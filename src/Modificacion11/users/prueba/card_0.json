@@ -1,0 +1,15 @@
+{
+  "_": [
+    "add"
+  ],
+  "user": "prueba",
+  "id": 0,
+  "name": "WhiteLotus",
+  "manaCost": 9,
+  "color": "rojo",
+  "lineType": "Tierra",
+  "rarity": "comun",
+  "rulesText": "texto",
+  "marketPrice": 10,
+  "$0": "dist/Modificacion11/index.js"
+}

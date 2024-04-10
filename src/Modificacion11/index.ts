@@ -55,20 +55,39 @@ function handleCommand(action: string, argv: any) {
   switch (action) {
     case 'add':{
       const newCard: Card = { ...argv };
-      collection.addCard(newCard);
+  collection.addCard(newCard, (error) => {
+    if (error) {
+      console.error('Error adding card:', error);
+    } else {
+      console.log('Card added successfully.');
+    }
+  });
       break;}
     case 'list':
       collection.listCards();
       break;
     case 'update':{
       const updatedCard: Card = { ...argv };
-      collection.updateCard(updatedCard);
+            console.log('Input data for updating card:', updatedCard);
+            collection.updateCard(updatedCard, (error) => {
+                if (error) {
+                    console.error('Error updating card:', error);
+                } else {
+                    console.log('Card updated successfully.');
+                }
+            });
       break;}
     case 'read':
       collection.readCard(argv.id);
       break;
     case 'remove':
-      collection.removeCard(argv.id);
+      collection.removeCard(argv.id, (success) => {
+        if (success) {
+            console.log('Card removed successfully.');
+        } else {
+            console.log('Error removing card.');
+        }
+    });
       break;
     default:
       console.log('Invalid command');

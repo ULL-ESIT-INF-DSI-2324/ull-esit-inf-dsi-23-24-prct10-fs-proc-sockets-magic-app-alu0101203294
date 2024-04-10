@@ -1,10 +1,10 @@
 {
   "id": 1,
-  "name": "Test Card 1",
+  "name": "Test Card",
   "manaCost": 2,
   "color": "Azul",
   "cardType": "Encantamiento",
   "rarity": "Rara",
-  "rulesText": "Test rules 1",
+  "rulesText": "Test rules",
   "marketPrice": 10
 }

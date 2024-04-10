@@ -60,7 +60,13 @@ export class CardCollection {
      * Método que carga una coleccion de cartas
      */
     private loadc(): void {
-        this.collection = Array.from(this.file.load().values());
+        this.file.load((error, collection) => {
+            if (error) {
+                console.error(`Error loading card collection: ${error}`);
+            } else {
+                this.collection = Array.from(collection.values());
+            }
+        });
     }
 
     /**
@@ -68,21 +74,26 @@ export class CardCollection {
      * @param newCard 
      * @returns
      */
-    public addCard(newCard: Card): void {
+    public addCard(newCard: Card, callback: (error: Error | null) => void): void {
         if (!newCard.color) {
-            console.log(chalk.yellow('The card color is missing.'));
+            callback(new Error('The card color is missing.'));
             return;
         }
 
         if (this.collection.some(card => card.id === newCard.id)) {
-            console.log(chalk.yellow('The card with this ID already exists in the collection.'));
+            callback(new Error('The card with this ID already exists in the collection.'));
             return;
         }
+
         this.collection.push(newCard);
-    
-        this.file.save(new Map(this.collection.map(card => [card.id, card])));
-    
-        console.log(chalk.green('Card added successfully.'));
+
+        this.file.save(new Map(this.collection.map(card => [card.id, card])), (error) => {
+            if (error) {
+                callback(error);
+            } else {
+                callback(null);
+            }
+        });
     }
 
     /**
@@ -91,16 +102,22 @@ export class CardCollection {
      * @returns  Retorna una carta actualizada.
      * 
      */
-    public updateCard(updatedCard: Card): boolean {
+    public updateCard(updatedCard: Card, callback: (error: Error | null) => void): void {
         const index = this.collection.findIndex(card => card.id === updatedCard.id);
+        console.log('Updated card ID:', updatedCard.id);
+        console.log('Collection:', this.collection.map(card => card.id));
         if (index !== -1) {
             this.collection[index] = updatedCard;
-            this.file.save(new Map(this.collection.map(card => [card.id, card])));
-            console.log(chalk.green('Card updated successfully.'));
-            return true;
+            this.file.save(new Map(this.collection.map(card => [card.id, card])), (error) => {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null);
+                }
+            });
         } else {
-            console.log(chalk.yellow('Card not found in the collection.'));
-            return false;
+            console.log('Card not found in the collection.');
+            callback(new Error('Card not found in the collection.'));
         }
     }
      
@@ -110,27 +127,40 @@ export class CardCollection {
      * @returns Retorna una carta eliminada.
      * 
      */
-    public removeCard(cardId: number): boolean {
+    public removeCard(cardId: number, callback: (success: boolean) => void): void {
         const filePath = this.file.getFilePath(cardId);
-        try {
-            fs.unlinkSync(filePath);
-            console.log(`The card file with ID ${cardId} has been deleted.`);
-        } catch (err) {
-            console.error(`Error deleting card file with ID ${cardId}: ${err}`);
-            return false;
-        }
     
-        // Filtrar la colección para eliminar la carta con el ID proporcionado
-        const initialLength = this.collection.length;
-        this.collection = this.collection.filter(card => card.id !== cardId);
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                if (err.code === 'ENOENT') {
+                    console.log(`The card file with ID ${cardId} was not found.`);
+                } else {
+                    console.error(`Error removing card file with ID ${cardId}: ${err}`);
+                }
+                callback(false);
+                return;
+            }
     
-        // Guardar los cambios en el archivo si se eliminó alguna carta
-        if (this.collection.length < initialLength) {
-            this.file.save(new Map(this.collection.map(card => [card.id, card])));
-            return true;
-        }
+            //console.log(`The card file with ID ${cardId} has been deleted.`);
     
-        return false;
+            const initialLength = this.collection.length;
+            this.collection = this.collection.filter(card => card.id !== cardId);
+    
+            if (this.collection.length < initialLength) {
+                this.file.save(new Map(this.collection.map(card => [card.id, card])), (error) => {
+                    if (error) {
+                        console.error(`Error saving card collection: ${error}`);
+                        callback(false);
+                    } else {
+                        console.log(chalk.green('Card removed successfully.'));
+                        callback(true);
+                    }
+                });
+            } else {
+                console.log('Card not found in the collection.');
+                callback(false);
+            }
+        });
     }
 
     /**

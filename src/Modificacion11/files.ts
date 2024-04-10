@@ -43,17 +43,41 @@ export class FileManager {
    * @param username Nombre de usuario.
    * @returns Retorna un mapa con las cartas del usuario.
    */
-  public load(): Map<number, Card> {
+  public load(callback: (error: NodeJS.ErrnoException | null, collection: Map<number, Card>) => void): void {
     const collection = new Map<number, Card>();
+    let loadedCount = 0;
+  
     if (fs.existsSync(this.userDir)) {
-      const files = fs.readdirSync(this.userDir);
-      for (const file of files) {
-        const data = fs.readFileSync(path.resolve(this.userDir, file), 'utf-8');
-        const card = JSON.parse(data) as Card;
-        collection.set(card.id, card);
-      }
+      fs.readdir(this.userDir, (err, files) => {
+        if (err) {
+          callback(err, collection);
+          return;
+        }
+  
+        if (files.length === 0) {
+          callback(null, collection);
+          return;
+        }
+  
+        for (const file of files) {
+          fs.readFile(path.resolve(this.userDir, file), 'utf-8', (err, data) => {
+            if (err) {
+              callback(err, collection);
+              return;
+            }
+            const card = JSON.parse(data) as Card;
+            collection.set(card.id, card);
+            loadedCount++;
+  
+            if (loadedCount === files.length) {
+              callback(null, collection);
+            }
+          });
+        }
+      });
+    } else {
+      callback(null, collection);
     }
-    return collection;
   }
 
   /**
@@ -61,12 +85,24 @@ export class FileManager {
    * @param collection 
    * @returns Retorna un mapa con las cartas del usuario.
    */
-  public save(collection: Map<number, Card>): void {
-    this.createDirectoryIfNotExists();
-    for (const [cardId, card] of collection) {
-      const filePath = this.getFilePath(cardId);
-      fs.writeFileSync(filePath, JSON.stringify(card, null, 2));
-    }
+  public save(collection: Map<number, Card>, callback: (error: NodeJS.ErrnoException | null) => void): void {
+    this.createDirectoryIfNotExists(() => {
+      let counter = 0;
+      for (const [cardId, card] of collection) {
+        const filePath = this.getFilePath(cardId);
+        const data = JSON.stringify(card, null, 2);
+        fs.writeFile(filePath, data, (err) => {
+          if (err) {
+            callback(err);
+            return;
+          }
+          counter++;
+          if (counter === collection.size) {
+            callback(null);
+          }
+        });
+      }
+    });
   }
 
   /**
@@ -74,9 +110,9 @@ export class FileManager {
    * @returns Retorna un directorio si no existe.
    * @private
    */
-  private createDirectoryIfNotExists(): void {
-    if (!fs.existsSync(this.userDir)) {
-      fs.mkdirSync(this.userDir, { recursive: true });
-    }
+  private createDirectoryIfNotExists(callback: (error: NodeJS.ErrnoException | null) => void): void {
+    fs.mkdir(this.userDir, { recursive: true }, (err) => {
+      callback(err);
+    });
   }
 }
