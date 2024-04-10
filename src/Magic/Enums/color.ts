@@ -12,4 +12,3 @@ export enum Color {
     Incoloro = 'Incoloro',
     Multicolor = 'Multicolor'
   }
-  

@@ -12,4 +12,3 @@ export enum LineType {
     Artefacto = 'Artefacto',
     Planeswalker = 'Planeswalker',
   }
-  

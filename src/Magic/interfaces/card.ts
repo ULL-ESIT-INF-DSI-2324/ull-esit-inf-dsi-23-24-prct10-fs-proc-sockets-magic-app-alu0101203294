@@ -29,4 +29,4 @@ export interface Card {
   resistance?: number; // Type Criatura
   loyalty?: number; // Type Planeswalker
   marketPrice: number;
-}
+} 
