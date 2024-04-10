@@ -126,6 +126,13 @@ El proyecto incluye una interfaz de línea de comandos (CLI) para interactuar co
 - `read`: Lee los detalles de una carta específica en la colección.
 - `remove`: Elimina una carta de la colección.
 
+
+## Cliente
+
+
+## Servidor
+
+
 ## Uso
 
 Para usar la interfaz de línea de comandos, ejecutar:
