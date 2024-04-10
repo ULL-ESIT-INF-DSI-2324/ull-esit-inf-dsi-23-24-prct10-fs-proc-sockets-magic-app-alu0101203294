@@ -128,10 +128,42 @@ El proyecto incluye una interfaz de línea de comandos (CLI) para interactuar co
 
 
 ## Cliente
+Este código es una aplicación de línea de comandos (CLI) escrita en TypeScript que se comunica con un servidor a través de sockets TCP/IP. La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en una colección de cartas Magic.
 
+Inicialización de la conexión TCP/IP:
+
+Se establece una conexión TCP/IP con el servidor utilizando net.createConnection(). Esto permite que la aplicación se comunique con el servidor a través del puerto especificado en la dirección IP del servidor.
+Manejo de eventos:
+
+La aplicación escucha eventos de datos ('data') y de cierre ('close') de la conexión. Cuando recibe datos del servidor, los procesa y muestra en la consola información relevante, como mensajes de estado o detalles de las cartas.
+Procesamiento de argumentos de la línea de comandos:
+
+La aplicación utiliza yargs para analizar los argumentos proporcionados en la línea de comandos al ejecutar la aplicación. Dependiendo de la operación especificada (añadir, actualizar, eliminar, listar, leer) y los datos proporcionados, se construye un objeto de solicitud que se enviará al servidor.
+Envío de solicitudes al servidor:
+
+Una vez analizados los argumentos de la línea de comandos y construido el objeto de solicitud, la aplicación lo envía al servidor a través de la conexión TCP/IP. El servidor procesará esta solicitud y realizará las operaciones correspondientes en la base de datos de cartas.    
 
 ## Servidor
+Implementa un servidor TCP/IP que gestiona las solicitudes de los clientes relacionadas con la manipulación de una colección de cartas de juego.
 
+Creación y configuración del servidor:
+
+Se crea un servidor utilizando net.createServer(), que escuchará las conexiones entrantes en el puerto especificado (PORT). Este servidor estará a la espera de las conexiones de los clientes.
+Manejo de eventos del socket:
+
+Cuando un cliente se conecta al servidor, se activa el evento 'connection' y se imprime un mensaje indicando que el cliente se ha conectado.
+Se establece un manejador de eventos para el evento 'data', que se activa cuando el servidor recibe datos del cliente. Los datos recibidos se interpretan como solicitudes del cliente y se procesan en consecuencia.
+Procesamiento de solicitudes:
+
+Las solicitudes recibidas se analizan y se ejecutan las operaciones correspondientes en la colección de cartas, como añadir, actualizar, eliminar, listar o leer cartas. Se utilizan estructuras de control switch para manejar diferentes tipos de operaciones.
+Cada operación implica interactuar con la colección de cartas (CardCollection), que está representada por una clase en el módulo cardmanager.js.
+Envío de respuestas al cliente:
+
+Después de procesar una solicitud, el servidor envía una respuesta al cliente a través del mismo socket que recibió la solicitud. La respuesta puede incluir mensajes de estado, detalles de las cartas o errores.
+La función sendResponse() se utiliza para enviar la respuesta al cliente. Los datos de respuesta se convierten en formato JSON antes de ser enviados al cliente.
+Cierre de conexión:
+
+Una vez que se ha completado una solicitud y se ha enviado la respuesta correspondiente, se cierra la conexión con el cliente utilizando socket.end().
 
 ## Uso
 
@@ -167,7 +199,7 @@ node dist/Magic/index.js read --user= <nombre_usuario> --id= <id_carta>
 ```
 
 # Modificación
-
+En modificación se pied dos funciones de la práctica 9 para que utilicen funciones asíncronas con callbacks. Por lo que se ha de reimplementar los metodos de dicha práctica para que se sustituyan en los mismos la invocación de métodos del API síncrona de Node.js de gestión el sistema de ficheros, por llamadas a los métodos equivalentes del API asíncrona basada en callbacks. Los archivos modificados se encuentran en la carpeta designada para esta modificación.
 
 
 
@@ -178,9 +210,9 @@ La aplicación proporciona una solución eficiente y práctica para la gestión 
 
 ---
 
-[Enlace al Guion](https://ull-esit-inf-dsi-2324.github.io/prct09-fiilesystem-magic-app/)
+[Enlace al Guion](https://ull-esit-inf-dsi-2324.github.io/prct10-fs-proc-sockets-magic-app/)
 
-[Enlace al Informe](https://ull-esit-inf-dsi-2324.github.io/ull-esit-inf-dsi-23-24-prct09-filesystem-magic-app-alu0101203294/index.html)
+[Enlace al Informe](https://ull-esit-inf-dsi-2324.github.io/ull-esit-inf-dsi-23-24-prct10-fs-proc-sockets-magic-app-alu0101203294/)
 
 ---
 

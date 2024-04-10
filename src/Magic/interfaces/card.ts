@@ -18,6 +18,7 @@ import { Rarity } from "../Enums/rarity.js";
  * @returns Retorna una carta.
  */
 
+
 export interface Card {
   id: number;
   name: string;
